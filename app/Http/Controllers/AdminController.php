@@ -15,10 +15,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $items = Item::latest()->get();
+        $items = Item::latest();
+
+        if (request('search')) {
+            $items->where('name', 'like', '%' . request('search') . '%');
+        }
 
         return view('.admin.list-products', [
-            "items" => $items
+            "items" => $items->paginate(2)
         ]);
     }
 
@@ -86,8 +90,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Item $item)
     {
+        return view('.admin.edit-product', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -97,7 +104,7 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Item $item)
     {
         //
     }

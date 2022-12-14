@@ -1,10 +1,11 @@
 @extends('layouts.main')
 
 @section('pages')
-<section class="relative pt-12 bg-blueGray-50">
+<section class="relative h-screen pt-12 bg-blueGray-50">
     <div class="flex items-center">
         <div class="w-full px-4 ml-auto mr-auto md:w-4/12">
-            <img alt="..." class="max-w-full rounded-lg shadow-lg" src="assets/image/Samsung.jpg">
+            <img alt="..." class="max-w-full rounded-lg shadow-lg"
+                src="{{ Storage::url('public/assets/image/') . $item->image }}">
         </div>
         <div class="w-full px-4 ml-auto mr-auto md:w-5/12">
             <div class="md:pr-12">

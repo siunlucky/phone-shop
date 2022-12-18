@@ -37,7 +37,7 @@
                         </span>
                     </a>
                     <!-- Sign In / Register      -->
-                    <a class="flex items-center hover:text-black" href="#">
+                    <a class="flex items-center hover:text-black" href="/login">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hover:text-black" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

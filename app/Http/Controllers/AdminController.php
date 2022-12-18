@@ -106,7 +106,42 @@ class AdminController extends Controller
      */
     public function update(Request $request, Item $item)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'image' => 'image|mimes:png,jpg,jpeg,svg',
+            'released' => 'required',
+        ]);
+
+        if ($request->hasFile('image')) {
+
+            //upload new image
+            $image = $request->file('image');
+            $image->storeAs('public/assets/image', $image->hashName());
+
+            //delete old image
+            Storage::delete('public/assets/image/' . $item->image);
+
+            //update post with new image
+            $item->update([
+                'name'        => $request->name,
+                'description' => $request->description,
+                'price'       => $request->price,
+                'image'       => $image->hashName(),
+                'released'    => $request->released,
+            ]);
+        } else {
+
+            //update post without image
+            $item->update([
+                'name'        => $request->name,
+                'description' => $request->description,
+                'price'       => $request->price,
+                'released'    => $request->released,
+            ]);
+        }
+        return redirect()->route('admin.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
     /**

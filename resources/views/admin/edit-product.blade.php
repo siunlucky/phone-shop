@@ -2,7 +2,7 @@
 @section('pages')
 <div class="flex items-center justify-center p-12">
     <div class="mx-auto w-full max-w-[550px]">
-        <form action="/admin/form-product/update" method="POST" enctype="multipart/form-data">
+        <form action="/admin/edit-product/update/{{ $item->id }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-5">
                 <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">

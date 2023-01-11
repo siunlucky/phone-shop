@@ -13,6 +13,7 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
-        "daisyui": "^2.43.2"
+        "daisyui": "^2.43.2",
+        "flowbite": "^1.6.1"
     }
 }

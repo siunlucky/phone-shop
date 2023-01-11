@@ -111,7 +111,7 @@
                         <div>
                             <label class="inline-flex items-center mt-2 cursor-pointer">
                                 <input id="agree" name="agree" value="agree" type="checkbox" required
-                                    class="w-5 h-5 ml-1 transition-all duration-150 ease-linear border-0 rounded form-checkbox text-blueGray-700">
+                                    class="w-5 h-5 ml-1 transition-all duration-150 ease-linear border-0 rounded form-checkbox text-blueGray-700 ">
                                 <span class="ml-2 text-sm font-semibold text-black">
                                     I agree all statements in <u>Terms of service</u>
                                 </span>

@@ -17,14 +17,52 @@
                     {{ $item->description }}
                 </p>
 
-                <a class="" href="">
+                @if (Auth::check())
+                @if (Auth()->user()->role == "admin")
+                <a class="" href="/admin/edit-product/{{ $item->id }}">
                     <button class="relative w-48 h-12 overflow-hidden text-lg bg-white rounded-lg shadow group">
                         <div
                             class="absolute inset-0 w-3 bg-emerald-500 transition-all duration-[250ms] ease-out group-hover:w-full">
                         </div>
-                        <span class="relative text-black group-hover:text-white">Add to Cart &nbsp; 🡺</span>
+                        <span class="relative text-black group-hover:text-white">Edit Product &nbsp; 🡺</span>
                     </button>
                 </a>
+                @else
+                <a class="" href="">
+                    <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" value="{{ $item->id }}" name="id">
+                        <input type="hidden" value="{{ $item->name }}" name="name">
+                        <input type="hidden" value="{{ $item->price }}" name="price">
+                        <input type="hidden" value="{{ $item->image }}" name="image">
+                        <input type="hidden" value="1" name="quantity">
+                        <button class="relative w-48 h-12 overflow-hidden text-lg bg-white rounded-lg shadow group">
+                            <div
+                                class="absolute inset-0 w-3 bg-emerald-500 transition-all duration-[250ms] ease-out group-hover:w-full">
+                            </div>
+                            <span class="relative text-black group-hover:text-white">Add to Cart &nbsp; 🡺</span>
+                        </button>
+                    </form>
+
+                </a>
+                @endif
+
+                @else
+                <a class="" href="/login">
+                    <button class="relative w-48 h-12 overflow-hidden text-lg bg-green-400 rounded-lg shadow group">
+
+                        <span class="relative text-white">Login to purchase</span>
+                    </button>
+                </a>
+
+
+
+
+
+
+                @endif
+
+
 
 
             </div>

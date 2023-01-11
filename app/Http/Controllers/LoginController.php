@@ -25,8 +25,14 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/')->with(['success' => 'Data Berhasil Disimpan!']);
+            if (auth()->user()->role == 'admin') {
+                return redirect()->intended('/admin')->with(['success' => 'Login Berhasil!']);
+            } else {
+                return redirect()->intended('/')->with(['success' => 'Login Berhasil!']);
+            }
         }
+
+
 
         return back()->with(['error' => 'Login Gagal!']);
     }
@@ -36,9 +42,15 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function logout(Request $request)
     {
-        //
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -17,7 +18,8 @@ class ItemController extends Controller
         $items = Item::latest()->get();
 
         return view('.pages.product.products', [
-            "items" => $items
+            "items" => $items,
+
         ]);
     }
 

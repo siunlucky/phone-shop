@@ -56,6 +56,16 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin123'),
             'address' => 'JL. Sanan 1A No. 26, Kota Malang',
             'gender' => 'male',
+            'role' => 'admin',
+        ]);
+        
+        User::create([
+            'name' => 'User',
+            'email' => 'user123@gmail.com',
+            'password' => bcrypt('user123'),
+            'address' => 'JL. Sanan 1A No. 26, Kota Malang',
+            'gender' => 'male',
+            'role' => 'member',
         ]);
     }
 }

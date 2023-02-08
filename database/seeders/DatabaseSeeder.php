@@ -51,9 +51,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Faiz Elfahad Kurniawan',
-            'email' => 'faizelfahad2@gmail.com',
-            'password' => bcrypt('prj977je94'),
+            'name' => 'Admin',
+            'email' => 'admin123@gmail.com',
+            'password' => bcrypt('admin123'),
             'address' => 'JL. Sanan 1A No. 26, Kota Malang',
             'gender' => 'male',
         ]);
